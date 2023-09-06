@@ -19,16 +19,8 @@ const Login = (props) => {
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     // Initial State
     value: "",
-    isValid: false,
+    isValid: null,
   });
-
-  useEffect(() => {
-    console.log("EFFECT RUNNING");
-
-    return () => {
-      console.log("EFFECT CLEANUP");
-    };
-  }, []);
 
   // useEffect(() => {
   //   const identifier = setTimeout(() => {
