@@ -4,7 +4,7 @@ import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
-// useReducer function
+// useReducer function for email
 const emailReducer = (state, action) => {
   // Checks conditions of information received
   if (action.type === "USER_INPUT") {
@@ -19,6 +19,9 @@ const emailReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
+// useReducer funtion for password
+const passwordReducer = (state, action) => {};
+
 const Login = (props) => {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
@@ -31,6 +34,8 @@ const Login = (props) => {
     value: "",
     isValid: null,
   });
+
+  const [passwordState, dispatchPassword] = useReducer();
 
   // useEffect(() => {
   //   const identifier = setTimeout(() => {
