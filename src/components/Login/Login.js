@@ -67,24 +67,26 @@ const Login = (props) => {
     // WE use the reducer function and give it an action
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
 
-    setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
+    setFormIsValid(emailState.isValid && passwordState.isValid);
   };
 
   const passwordChangeHandler = (event) => {
+    // Use reducer function and give it action for password
     dispatchPassword({ type: "USER_PASSWORD", val: event.target.value });
 
     setFormIsValid(
-      // Checks if email is valid
+      // Checks if email and password is valid
       emailState.isValid && passwordState.isValid
     );
   };
 
   const validateEmailHandler = () => {
-    // Happens when inout looses focus
+    // Happens when email input looses focus
     dispatchEmail({ type: "INPUT_BLUR" });
   };
 
   const validatePasswordHandler = () => {
+    // Happens when password input looses focus
     dispatchPassword({ type: "PASSWORD_BLUR" });
   };
 
