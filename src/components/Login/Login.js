@@ -45,6 +45,10 @@ const Login = (props) => {
     isValid: null,
   });
 
+  // Obj deconstruction to get only needed values from states with allies assignment to avoid running useEffect on every character change
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
+
   useEffect(() => {
     const identifier = setTimeout(() => {
       setFormIsValid(emailState.isValid && passwordState.isValid);
@@ -53,7 +57,7 @@ const Login = (props) => {
     return () => {
       clearTimeout(identifier);
     };
-  }, [emailState, passwordState]);
+  }, [emailIsValid, passwordIsValid]);
 
   const emailChangeHandler = (event) => {
     // WE use the reducer function and give it an action
