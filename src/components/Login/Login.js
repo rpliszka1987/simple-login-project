@@ -1,8 +1,9 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useReducer, useEffect, useContext } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import AuthContext from "../../store/auth-context";
 
 // useReducer function for email
 const emailReducer = (state, action) => {
@@ -44,6 +45,8 @@ const Login = (props) => {
     value: "",
     isValid: null,
   });
+
+  const ctx = useContext(AuthContext);
 
   // Obj deconstruction to get only needed values from states with allies assignment to avoid running useEffect on every character change
   const { isValid: emailIsValid } = emailState;
@@ -88,7 +91,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    ctx.onLogin(emailState.value, passwordState.value);
   };
 
   return (
