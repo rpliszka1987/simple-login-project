@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+// Everything managed in one file for login and logout purposes
+
+// Creating AuthContect obj
 const AuthContext = React.createContext({
   isLoggedn: false,
   onLogout: () => {},
